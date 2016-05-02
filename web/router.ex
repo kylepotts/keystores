@@ -26,6 +26,7 @@ defmodule Keystores.Router do
   # end
 
   scope "/api", KeyStores do
-    post "/login", AuthController, :register
+    post "/register", AuthController, :register
+    post "/login",    AuthController, :login
   end
 end

@@ -4,11 +4,12 @@ defmodule Keystores.User do
   schema "users" do
     field :username, :string
     field :password_hash, :string
+    field :token, :string
 
     timestamps
   end
 
-  @required_fields ~w(username password_hash)
+  @required_fields ~w(username password_hash token)
   @optional_fields ~w()
 
   @doc """
