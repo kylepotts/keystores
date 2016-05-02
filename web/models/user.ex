@@ -2,12 +2,13 @@ defmodule Keystores.User do
   use Keystores.Web, :model
 
   schema "users" do
-    field :name, :string
+    field :username, :string
+    field :password_hash, :string
 
     timestamps
   end
 
-  @required_fields ~w(name)
+  @required_fields ~w(username password_hash)
   @optional_fields ~w()
 
   @doc """

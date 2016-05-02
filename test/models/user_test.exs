@@ -3,7 +3,7 @@ defmodule Keystores.UserTest do
 
   alias Keystores.User
 
-  @valid_attrs %{name: "some content"}
+  @valid_attrs %{password_hash: "some content", username: "some content"}
   @invalid_attrs %{}
 
   test "changeset with valid attributes" do
