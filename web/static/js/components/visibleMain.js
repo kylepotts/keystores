@@ -1,10 +1,11 @@
 import { connect } from 'react-redux'
-import { showRegisterModal, hideRegisterModal } from '../actions/actions'
+import { showRegisterModal, hideRegisterModal, updateRegisterForm, resetRegisterForm } from '../actions/actions'
 import Main from './main'
 
 const mapStateToProps = (state) => {
   return {
-    is_visable: state.registerModalVisable
+    is_visible: state.registerModalVisable,
+    registerFormValues: state.registerForm
   }
 }
 
@@ -15,6 +16,11 @@ const mapDispatchToProps = (dispatch) => {
     },
     onRegisterClose: () => {
       dispatch(hideRegisterModal())
+      dispatch(resetRegisterForm())
+    },
+
+    onUpdateField:(name,value) => {
+      dispatch(updateRegisterForm(name,value))
     }
   }
 }

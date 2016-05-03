@@ -1,8 +1,7 @@
 import React from "react"
-import ReactDOM from "react-dom"
-import {Navbar, Jumbotron, Button, Modal} from 'react-bootstrap'
-import { createStore } from 'redux'
-import todoApp from '../reducers/reducer'
+import {Navbar, Jumbotron, Button, Modal, Form, FormGroup, FormControl, ControlLabel, InputGroup, Col} from 'react-bootstrap'
+import RegisterModal from './registerModal'
+
 
 
 import "../../css/app.css";
@@ -20,6 +19,7 @@ class Main extends React.Component {
   }
 
   render() {
+    console.log(this.props)
     return (
       <div>
         <Navbar fixedTop={true}>
@@ -35,15 +35,12 @@ class Main extends React.Component {
               <p><Button bsStyle='primary' onClick={this.props.onRegisterButtonClick}>Sign Up</Button></p>
             </div>
           </Jumbotron>
-          <Modal show={this.props.is_visable} onHide={this.props.onRegisterClose}>
-            <Modal.Title>Sign Up</Modal.Title>
-            <Modal.Body>
-              <h4>Text</h4>
-            </Modal.Body>
-            <Modal.Footer>
-              <Button onClick={this.props.onRegisterClose}>Close</Button>
-            </Modal.Footer>
-          </Modal>
+          <RegisterModal
+            is_visible={this.props.is_visible}
+            onRegisterClose={this.props.onRegisterClose}
+            onUpdateField={this.props.onUpdateField}
+            values={this.props.registerFormValues}
+            />
         </div>
       </div>
     )

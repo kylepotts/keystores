@@ -1,5 +1,7 @@
 import { combineReducers } from 'redux'
-import {HIDE_REGISTER_MODAL, SHOW_REGISTER_MODAL} from '../actions/actions'
+import {HIDE_REGISTER_MODAL, SHOW_REGISTER_MODAL, REGISTER_FORM_RESET_VALUE, REGISTER_FORM_UPDATE_VALUE} from '../actions/actions'
+import assign from 'lodash.assign';
+import validateEmail from '../validators/emailValidation'
 
 function registerModalVisable(state = false, action) {
   switch (action.type) {
@@ -14,8 +16,58 @@ function registerModalVisable(state = false, action) {
   }
 }
 
+function validate(name,value, state){
+  switch(name){
+    case 'email':
+      let validEmail = validateEmail(value)
+      if(validEmail){
+        return 'success'
+      } else {
+        return 'error'
+      }
+
+    case 'password':
+      if(value.length < 6){
+        return 'error'
+      } else {
+        return 'success'
+      }
+
+      case 'passwordConfirm':
+        if(value === state.password){
+          return 'success'
+        } else {
+          return 'error'
+        }
+
+  }
+}
+
+function registerForm(state = {email: '', password: '', confirmPassword: ''}, action) {
+  switch(action.type){
+    case REGISTER_FORM_UPDATE_VALUE:
+      return assign({}, state, {
+        [action.name]: action.value,
+        [`${action.name}ValidType`]: validate(action.name, action.value, state)
+      })
+
+    case REGISTER_FORM_RESET_VALUE:
+    return assign({}, state, {
+      ['password']: '',
+      ['passwordValidType']: null,
+      ['passwordConfirm']: '',
+      ['passwordConfirmValidType']: null,
+      ['email']: '',
+      ['emailValidType']: null
+    })
+    default:
+      return state
+  }
+}
+
 const keystoreApp = combineReducers({
-  registerModalVisable
+  registerModalVisable,
+  registerForm
 })
 
 export default keystoreApp
