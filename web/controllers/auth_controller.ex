@@ -52,7 +52,24 @@ defmodule KeyStores.AuthController do
   end
 
   def login_user(username,password) do
-    %{type: "yes"}
+    query = from user in User,
+            where: user.username == ^username,
+            select: user
+    user = List.first(Repo.all(query))
+    if user != nil do
+      correct_pass = Comeonin.Bcrypt.checkpw(password,user.password_hash)
+      verified_token = user.token
+      |> token
+      |> with_signer(hs256("my_secret"))
+      |> verify
+      if verified_token.error == nil do
+        %{type: "success", token: user.token, id: user.id}
+      else
+        ""
+      end
+    else
+      %{type: "error", error: "Incorrect password"}
+    end
   end
 
 end

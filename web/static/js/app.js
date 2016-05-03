@@ -1,12 +1,20 @@
 import React from "react"
 import ReactDOM from "react-dom"
-import Main from "./components/main"
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
+import VisibleMain from "./components/visibleMain"
 import Temp from "./components/temp"
+import keystoreApp from './reducers/reducer'
 import { Router, Route, Link, browserHistory } from 'react-router'
 
+let store = createStore(keystoreApp)
+
 ReactDOM.render((
-  <Router history={browserHistory}>
-    <Route path="/" component={Main}/>
-    <Route path="/about" component={Temp}/>
-</Router>),document.getElementById("root")
+  <Provider store={store}>
+    <Router history={browserHistory}>
+      <Route path="/" component={VisibleMain}/>
+      <Route path="/about" component={Temp}/>
+    </Router>
+  </Provider>)
+  ,document.getElementById("root")
 )
