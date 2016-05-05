@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 import {Button, Modal, Form, FormGroup, FormControl, ControlLabel, InputGroup, Col} from 'react-bootstrap'
 
-import "../../css/registerModal.css";
+import "../../../css/registerModal.css";
 
 const RegisterModal = ({is_visible, onRegisterClose, onUpdateField, values}) => (
   <Modal show={is_visible} onHide={onRegisterClose}>

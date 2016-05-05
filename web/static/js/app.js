@@ -2,8 +2,8 @@ import React from "react"
 import ReactDOM from "react-dom"
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
-import VisibleMain from "./components/visibleMain"
-import Temp from "./components/temp"
+import VisibleMain from "./components/container/visibleMain"
+import Temp from "./components/presentation/temp"
 import keystoreApp from './reducers/reducer'
 import { Router, Route, Link, browserHistory } from 'react-router'
 

@@ -4,7 +4,7 @@ import RegisterModal from './registerModal'
 
 
 
-import "../../css/app.css";
+import "../../../css/app.css";
 
 class Main extends React.Component {
 

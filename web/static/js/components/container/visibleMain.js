@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
-import { showRegisterModal, hideRegisterModal, updateRegisterForm, resetRegisterForm } from '../actions/actions'
-import Main from './main'
+import { showRegisterModal, hideRegisterModal, updateRegisterForm, resetRegisterForm } from '../../actions/registerActions'
+import Main from '../presentation/main'
 
 const mapStateToProps = (state) => {
   return {
