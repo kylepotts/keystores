@@ -3,7 +3,16 @@ import {Button, Modal, Form, FormGroup, FormControl, ControlLabel, InputGroup, C
 
 import "../../../css/registerModal.css";
 
-const RegisterModal = ({is_visible, onRegisterClose, onUpdateField, values}) => (
+function onSubmitClick(values, register){
+  console.log(values)
+
+  if (values.emailValidType === 'success' &&  values.passwordValidType === 'success' && values.passwordConfirmValidType === 'success'){
+    register(values.email, values.password)
+  }
+
+}
+
+const RegisterModal = ({is_visible, onSubmitRegister, onRegisterClose, onUpdateField, values}) => (
   <Modal show={is_visible} onHide={onRegisterClose}>
     <div className='modal-header'> Sign Up </div>
     <Modal.Body>
@@ -30,7 +39,7 @@ const RegisterModal = ({is_visible, onRegisterClose, onUpdateField, values}) => 
     </Modal.Body>
     <Modal.Footer>
       <Button onClick={onRegisterClose}>Close</Button>
-      <Button bsStyle='success'>Sign Up</Button>
+      <Button bsStyle='success' onClick={() => {onSubmitClick(values, onSubmitRegister)}}>Sign Up</Button>
     </Modal.Footer>
   </Modal>
 )

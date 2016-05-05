@@ -37,6 +37,7 @@ class Main extends React.Component {
           </Jumbotron>
           <RegisterModal
             is_visible={this.props.is_visible}
+            onSubmitRegister={this.props.onSubmitRegister}
             onRegisterClose={this.props.onRegisterClose}
             onUpdateField={this.props.onUpdateField}
             values={this.props.registerFormValues}

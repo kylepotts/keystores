@@ -43,6 +43,24 @@ function validate(name,value, state){
   }
 }
 
+export function registerUser(state = { isFetching: false, userData: null}, action) {
+  switch(action.type){
+    case c.START_REGISTER:
+      return assign({}, state, {
+        isFetching: true
+      })
+
+    case c.SUBMIT_REGISTER:
+    return assign({}, state, {
+      isFetching: false,
+      userData: action.data
+    })
+
+    default:
+      return state
+  }
+}
+
 export function registerForm(state = {email: '', password: '', confirmPassword: ''}, action) {
   switch(action.type){
     case c.REGISTER_FORM_UPDATE_VALUE:
