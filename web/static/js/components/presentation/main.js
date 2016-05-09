@@ -1,6 +1,7 @@
 import React from "react"
 import {Navbar, Jumbotron, Button, Modal, Form, FormGroup, FormControl, ControlLabel, InputGroup, Col} from 'react-bootstrap'
 import RegisterModal from './registerModal'
+import VisibleNavBar from '../container/visibleNavBar'
 
 
 
@@ -19,7 +20,7 @@ class Main extends React.Component {
   }
 
   render() {
-    console.log(this.props)
+    console.log(this.props.userRegistration)
     return (
       <div>
         <Navbar fixedTop={true}>
@@ -41,6 +42,7 @@ class Main extends React.Component {
             onRegisterClose={this.props.onRegisterClose}
             onUpdateField={this.props.onUpdateField}
             values={this.props.registerFormValues}
+            registerData={this.props.userRegistration}
             />
         </div>
       </div>

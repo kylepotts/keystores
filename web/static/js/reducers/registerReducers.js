@@ -43,25 +43,32 @@ function validate(name,value, state){
   }
 }
 
-export function registerUser(state = { isFetching: false, userData: null}, action) {
+export function registerUser(state = { isFetching: false, registrationData: null}, action) {
   switch(action.type){
     case c.START_REGISTER:
       return assign({}, state, {
         isFetching: true
       })
 
-    case c.SUBMIT_REGISTER:
-    return assign({}, state, {
-      isFetching: false,
-      userData: action.data
-    })
+    case c.RECEIVE_REGISTER_DATA:
+      return assign({}, state, {
+        isFetching: false,
+        registrationData: action.registrationData
+      })
+
+    case c.RESET_REGISTER_DATA:
+      return assign({}, state, {
+        ['isFetching']: false,
+        ['registrationData']: null
+      })
+
 
     default:
       return state
   }
 }
 
-export function registerForm(state = {email: '', password: '', confirmPassword: ''}, action) {
+export function registerForm(state = {email: '', password: '', passwordConfirm: ''}, action) {
   switch(action.type){
     case c.REGISTER_FORM_UPDATE_VALUE:
       return assign({}, state, {

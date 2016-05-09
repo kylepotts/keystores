@@ -10,7 +10,8 @@ export const hideRegisterModal = makeActionCreator(c.HIDE_REGISTER_MODAL)
 export const updateRegisterForm = makeActionCreator(c.REGISTER_FORM_UPDATE_VALUE, 'name', 'value')
 export const resetRegisterForm = makeActionCreator(c.REGISTER_FORM_RESET_VALUE)
 export const startRegister = makeActionCreator(c.START_REGISTER)
-export const receiveRegisterData = makeActionCreator(c.RECEIVE_REGISTER_DATA, 'data')
+export const receiveRegisterData = makeActionCreator(c.RECEIVE_REGISTER_DATA, 'registrationData')
+export const resetRegisterData  = makeActionCreator(c.RESET_REGISTER_DATA)
 
 
 export function submitRegister(username, password) {
