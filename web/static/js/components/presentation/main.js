@@ -20,14 +20,12 @@ class Main extends React.Component {
   }
 
   render() {
-    console.log(this.props.userRegistration)
+    if(this.props.userRegistration.registrationData && this.props.userRegistration.registrationData.type === 'success'){
+      window.location = '/about'
+    }
     return (
       <div>
-        <Navbar fixedTop={true}>
-          <Navbar.Brand>
-            <a href="#">Keystores</a>
-          </Navbar.Brand>
-        </Navbar>
+        <VisibleNavBar />
         <div>
           <Jumbotron id='jumbo-parent'>
             <div id='jumbo-child'>

@@ -1,11 +1,11 @@
 import React from "react"
-import {Navbar} from 'react-bootstrap'
+import {Navbar, Nav, NavItem} from 'react-bootstrap'
 
 
 
 import "../../../css/app.css";
 
-class Nav extends React.Component {
+class Navb extends React.Component {
 
   constructor(props){
     super(props)
@@ -15,13 +15,21 @@ class Nav extends React.Component {
     return (
       <div>
         <Navbar fixedTop={true}>
-          <Navbar.Brand>
-            <a href="#">Keystores</a>
-          </Navbar.Brand>
+          <Navbar.Header>
+            <Navbar.Brand>
+              <a href="#">Keystores</a>
+            </Navbar.Brand>
+            <Navbar.Toggle />
+          </Navbar.Header>
+          <Navbar.Collapse>
+            <Nav pullRight>
+              <NavItem eventKey={1} href='#' onClick={() => {console.log('ye')}} > Login </NavItem>
+            </Nav>
+          </Navbar.Collapse>
         </Navbar>
       </div>
     )
   }
 }
 
-export default Nav
+export default Navb

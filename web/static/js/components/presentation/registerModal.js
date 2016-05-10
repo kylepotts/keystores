@@ -13,7 +13,7 @@ function onSubmitClick(values, register) {
 
 function toDisableButtons(values, registerData) {
   if (values.emailValidType === 'success' &&  values.passwordValidType === 'success' && values.passwordConfirmValidType === 'success'){
-    
+
     if(registerData.registrationData !== null && registerData.registrationData.type === 'error') {
       return true
     } else {
@@ -31,7 +31,7 @@ class ErrorPanel extends React.Component {
   }
 
   render(){
-    if(this.props.registerData.registrationData !== null) {
+    if(this.props.registerData.registrationData !== null && this.props.registerData.registrationData.type === 'error') {
       return (
         <Alert bsStyle='danger'>
           {this.props.registerData.registrationData.error}
