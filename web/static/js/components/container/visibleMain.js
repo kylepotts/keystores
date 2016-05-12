@@ -19,7 +19,6 @@ const mapDispatchToProps = (dispatch) => {
     onRegisterClose: () => {
       dispatch(hideRegisterModal())
       dispatch(resetRegisterForm())
-      dispatch(resetRegisterData())
 
     },
 

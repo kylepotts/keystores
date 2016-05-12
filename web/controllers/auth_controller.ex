@@ -58,17 +58,21 @@ defmodule KeyStores.AuthController do
     user = List.first(Repo.all(query))
     if user != nil do
       correct_pass = Comeonin.Bcrypt.checkpw(password,user.password_hash)
-      verified_token = user.token
-      |> token
-      |> with_signer(hs256("my_secret"))
-      |> verify
-      if verified_token.error == nil do
-        %{type: "success", token: user.token, id: user.id}
+      if correct_pass do
+        verified_token = user.token
+        |> token
+        |> with_signer(hs256("my_secret"))
+        |> verify
+        if verified_token.error == nil do
+          %{type: "success", token: user.token, id: user.id}
+        else
+          %{type: "error", error: "token has expired"}
+        end
       else
-        ""
+        %{type: "error", error: "Incorrect password"}
       end
     else
-      %{type: "error", error: "Incorrect password"}
+      %{type: "error", error: "A account with that email does not exist"}
     end
   end
 
